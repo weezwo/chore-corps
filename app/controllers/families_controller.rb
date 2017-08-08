@@ -9,6 +9,10 @@ class FamiliesController < ApplicationController
     @family = Family.create(family_params)
   end
 
+  def show
+    @family = current_user.family
+  end
+
   private
 
   def family_params
