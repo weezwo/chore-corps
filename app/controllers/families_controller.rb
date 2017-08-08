@@ -1,5 +1,5 @@
 class FamiliesController < ApplicationController
-  before_action :require_login, only: [:show]
+  before_action :authenticate_user!, only: [:show]
 
   def new
     @family = Family.new
