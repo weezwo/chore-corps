@@ -1,0 +1,25 @@
+<%= form_for @family do |f| %>
+  <%= f.label :name, "Family Name" %>
+  <%= f.text_field :name %> <br>
+
+  <%= f.label :password, "Family Password" %>
+  <%= f.text_field :password %> <span class="aside">(*Members of your family will enter this password when they make an account!)</span> <br>
+
+  <%= f.label :password_confirmation, "Confirm Password" %>
+  <%= f.text_field :password_confirmation %> <br> <br>
+
+  <%= fields_for :users, @family.users.build do |user|%>
+    <%= user.label :name, "Your Name" %>
+    <%= user.email_field :name %> <br>
+
+    <%= user.label :email, "Your Email" %>
+    <%= user.email_field :email %> <br>
+
+    <%= user.label :password, "Your Password" %>
+    <%= user.email_field :password %> <br>
+
+    <%= user.label :password_confirmation, "Confirm Password" %>
+    <%= user.email_field :password_confirmation %> <span class="aside">(*You will use this password when you log in!)</span> <br>
+  <% end %>
+  <%= f.submit %>
+<% end %>
