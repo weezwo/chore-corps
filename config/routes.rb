@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'static#index'
+  root 'static#index', as: 'root'
   devise_for :users
   resources :families
 
