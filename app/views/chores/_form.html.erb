@@ -1,6 +1,7 @@
 <%= form_for @chore do |f| %>
+<%= f.hidden_field :family_id, value: current_family.id %>
 <%= f.label :name %>: <%= f.text_field :name %> <br>
-<%= f.label :cycle %>: <%= f.select :cycle, options_for_select(["Daily", "Weekly", "Monthly", "Seasonally", "Yearly"],["86400", "604800", "2592000", "7776000"]), include_blank: true%> <br>
+<%= f.label :cycle %>: <%= f.select :cycle, options_for_select([["Daily", "86400"], ["Weekly","604800"], ["Monthly","2592000"], ["Seasonally", "7776000"], ["Yearly","31557600"]]), include_blank: true%> <br>
 <%= f.label :notes %>: <%= f.text_area :notes %> <br>
 <%= f.submit %>
 <% end %>
