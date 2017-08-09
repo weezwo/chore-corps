@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20170809193326) do
 
   create_table "chores", force: :cascade do |t|
     t.string   "name"
+    t.integer  "family_id"
     t.integer  "cycle"
     t.datetime "last_completed"
     t.datetime "created_at",     null: false
