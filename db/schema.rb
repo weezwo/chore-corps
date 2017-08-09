@@ -33,9 +33,10 @@ ActiveRecord::Schema.define(version: 20170809193326) do
     t.integer  "user_id"
     t.integer  "chore_id"
     t.datetime "due_date"
+    t.datetime "completion_date"
     t.text     "notes"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "users", force: :cascade do |t|
