@@ -1,0 +1,12 @@
+<h2><%= @chore.name %></h2>
+
+This chore is done every <%= pluralize @chore.cycle / 86400, "day" %>. <br>
+
+This chore should be completed
+<% if @chore.last_completed %>
+  by <%= (@chore.last_completed + @chore.cycle).strftime("%A, %B %e")%>.
+<% else %>
+ASAP.
+<% end %>
+<br>
+<%= link_to "Claim this chore!", tasks_path, method: :post %>

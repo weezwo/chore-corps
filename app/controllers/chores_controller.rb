@@ -8,6 +8,10 @@ class ChoresController < ApplicationController
     redirect_to family_path(current_family)
   end
 
+  def show
+    @chore = Chore.find(params[:id])
+  end
+
   def edit
     @chore = chore.find(params[:id])
   end
