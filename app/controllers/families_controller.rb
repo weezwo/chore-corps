@@ -10,7 +10,6 @@ class FamiliesController < ApplicationController
   end
 
   def show
-    @family = current_user.family
   end
 
   private
