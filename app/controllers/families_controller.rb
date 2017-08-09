@@ -7,6 +7,7 @@ class FamiliesController < ApplicationController
 
   def create
     @family = Family.create(family_params)
+    redirect_to family_path(@family)
   end
 
   def show
