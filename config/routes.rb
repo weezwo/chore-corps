@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :tasks
+  resources :chores
   root 'static#index', as: 'root'
   devise_for :users
   resources :families
