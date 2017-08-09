@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20170809193326) do
     t.integer  "family_id"
     t.integer  "cycle"
     t.datetime "last_completed"
+    t.text     "notes"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
@@ -34,7 +35,6 @@ ActiveRecord::Schema.define(version: 20170809193326) do
     t.integer  "chore_id"
     t.datetime "due_date"
     t.datetime "completion_date"
-    t.text     "notes"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

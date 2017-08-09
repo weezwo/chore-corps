@@ -5,7 +5,6 @@ class CreateTasks < ActiveRecord::Migration
       t.integer :chore_id
       t.datetime :due_date
       t.datetime :completion_date 
-      t.text :notes
       t.timestamps null: false
     end
   end

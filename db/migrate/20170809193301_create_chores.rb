@@ -5,6 +5,7 @@ class CreateChores < ActiveRecord::Migration
       t.integer :family_id
       t.integer :cycle
       t.datetime :last_completed
+      t.text :notes
       t.timestamps null: false
     end
   end
