@@ -9,7 +9,9 @@ This chore should be completed
 ASAP.
 <% end %>
 <br>
-
+<% if claimed_chore? %>
+  CLAIMED
+<% end %>
 <br>
 <%= form_for @task do |f| %>
 <%= f.hidden_field :chore_id, value: @chore.id %>
