@@ -1,15 +1,16 @@
 <h2><%= @chore.name %></h2>
 
-This chore is done every <%= pluralize @chore.cycle / 86400, "day" %>. <br>
+This chore is done every <%= chore_frequency %>. <br>
 
 This chore should be completed
 <% if @chore.last_completed %>
-  by <%= (@chore.last_completed + @chore.cycle).strftime("%A, %B %e")%>.
+  by <%= format_due_date(@chore) %>.
 <% else %>
 ASAP.
 <% end %>
 <br>
 <%= form_for @task do |f| %>
+<%= f.hidden_field :chore_id, value: @chore.id %>
 <%= f.hidden_field :user_id, value: current_user.id %>
 <%= f.submit "Claim this Chore!" %>
 <% end %>
