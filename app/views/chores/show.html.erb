@@ -9,4 +9,7 @@ This chore should be completed
 ASAP.
 <% end %>
 <br>
-<%= link_to "Claim this chore!", tasks_path, method: :post %>
+<%= form_for @task do |f| %>
+<%= f.hidden_field :user_id, value: current_user.id %>
+<%= f.submit "Claim this Chore!" %>
+<% end %>
