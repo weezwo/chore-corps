@@ -7,8 +7,8 @@ module ChoresHelper
     pluralize @chore.cycle / 86400, "day"
   end
 
-  def claimed_chore?
-    @chore.tasks.any?{|task| task.completion_status.nil?}
+  def claimed_chore?(chore)
+    chore.tasks.any?{|task| task.completion_status.nil?}
   end
 
   def claimed_chore_notice
