@@ -9,6 +9,8 @@ This chore should be completed
 ASAP.
 <% end %>
 <br>
+
+<br>
 <%= form_for @task do |f| %>
 <%= f.hidden_field :chore_id, value: @chore.id %>
 <%= f.hidden_field :user_id, value: current_user.id %>

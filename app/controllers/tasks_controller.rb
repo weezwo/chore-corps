@@ -1,8 +1,9 @@
 class TasksController < ApplicationController
   def create
     t = Task.new(task_params)
-    t.due_date = calculate_due_date(t.chore) # t.chore.last_completed + t.chore.cycle
-    raise t.inspect
+    t.due_date = calculate_due_date(t.chore)
+    t.save
+    redirect_to chore_path(t.chore)
   end
 
   def task_params
