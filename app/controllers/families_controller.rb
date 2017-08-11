@@ -13,6 +13,12 @@ class FamiliesController < ApplicationController
   def show
   end
 
+  def users_index
+    @family = Family.find(params[:id])
+    @users = @family.users
+    render template: 'users/index'
+  end
+
   private
 
   def family_params
