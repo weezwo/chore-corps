@@ -8,6 +8,10 @@ module ChoresHelper
 
   end
 
+  def format_frequency(chore)
+    pluralize chore.frequency, "day"
+  end
+
   def overdue?(object)
     if object.respond_to? :due_date
       object.due_date < DateTime.now

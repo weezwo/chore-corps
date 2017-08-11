@@ -7,10 +7,10 @@ class Chore < ActiveRecord::Base
   end ## Numbers correspond to the number of seconds that should elapse between tasks
 
   def claimed_chore?
-    tasks.any?{|task| task.completion_status == 'pending'}
+    tasks.any?{|task| task.completion_status == 'pending' && task.id}
   end
 
   def frequency
-    pluralize self.cycle / 86400, "day"
+    cycle / 86400
   end
 end

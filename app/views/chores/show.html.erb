@@ -1,17 +1,14 @@
 <h2><%= @chore.name %></h2>
-
-This chore is done every <%= chore_frequency %>. <br>
+This chore is done every <%= format_frequency(@chore) %>. <br>
 
 This chore should be completed
 <% if @chore.last_completed %>
-  by <span class=<%= "overdue" if overdue?(@chore) %>><%= format_due_date(@chore) %>.</span>
+  by <span <%= "class='overdue'" if overdue?(@chore) %>><%= format_due_date(@chore) %>.</span>
 <% else %>
 ASAP.
 <% end %>
 <br>
-<% if claimed_chore?(@chore) %>
-  CLAIMED
-<% end %>
+<%= @chore.claimed_chore? %>
 <% if user_has_task?(@chore) %>
   BY YOU <br>
 <% else %>
