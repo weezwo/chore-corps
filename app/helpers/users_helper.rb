@@ -2,9 +2,8 @@ module UsersHelper
 
   def poach_or_complete(task)
     if @user == current_user
-      form_tag url_for '/tasks/' + task.id.to_s do
-        hidden_field_tag 'task', task
-        submit_tag "Complete this Chore!"
+      form_for task do |f|
+        f.submit "Complete this Chore!"
       end
     else
       form_for @task, as:"task" do |f|
