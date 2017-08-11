@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170810013539) do
+ActiveRecord::Schema.define(version: 20170811205501) do
 
   create_table "chores", force: :cascade do |t|
     t.string   "name"
@@ -35,9 +35,9 @@ ActiveRecord::Schema.define(version: 20170810013539) do
     t.integer  "chore_id"
     t.datetime "due_date"
     t.datetime "completion_date"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.string   "completion_status"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.string   "completion_status", default: "pending"
   end
 
   create_table "users", force: :cascade do |t|
