@@ -11,6 +11,10 @@ module ChoresHelper
     chore.tasks.any?{|task| task.completion_status.nil?}
   end
 
+  def user_has_task?(chore)
+    current_user.tasks.any?{|task| task.chore_id == chore.id}
+  end
+
   def claimed_chore_notice
 
   end

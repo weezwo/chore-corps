@@ -12,9 +12,13 @@ ASAP.
 <% if claimed_chore?(@chore) %>
   CLAIMED
 <% end %>
+<% if user_has_task?(@chore) %>
+  BY YOU
+<% else %>
 <br>
 <%= form_for @task do |f| %>
 <%= f.hidden_field :chore_id, value: @chore.id %>
 <%= f.hidden_field :user_id, value: current_user.id %>
 <%= f.submit "Claim this Chore!" %>
+<% end %>
 <% end %>
