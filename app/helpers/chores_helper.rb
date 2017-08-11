@@ -8,11 +8,11 @@ module ChoresHelper
   end
 
   def claimed_chore?(chore)
-    chore.tasks.any?{|task| task.completion_status.nil?}
+    chore.tasks.any?{|task| task.completion_status == 'pending'}
   end
 
   def user_has_task?(chore)
-    current_user.tasks.any?{|task| task.chore_id == chore.id  && task.completion_status.nil?}
+    current_user.tasks.any?{|task| task.chore_id == chore.id  && task.completion_status == 'pending'}
   end
 
   def claimed_chore_notice

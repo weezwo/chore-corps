@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   def create
     t = Task.new(task_params)
     if claimed_chore?(t.chore)
-      t.chore.tasks.where(completion_status: nil).each do |task|
+      t.chore.tasks.where(completion_status: 'pending').each do |task|
         task.update(completion_status: "poached")
       end
     end

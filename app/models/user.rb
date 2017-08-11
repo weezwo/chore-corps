@@ -9,6 +9,6 @@ class User < ActiveRecord::Base
   has_many :chores, through: :tasks
 
   def pending_tasks
-    self.tasks.select {|task| task.completion_status.nil?}
+    self.tasks.select {|task| task.completion_status == 'pending'}
   end
 end
