@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
     current_user.family
   end
 
+  def verify_family
+    User.find(params[:id]).family == current_family
+  end
+
   def calculate_due_date(chore)
     chore.last_completed + chore.cycle
   end
