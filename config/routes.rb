@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
+
+  root 'static#index', as: 'root'
+
   resources :tasks
   resources :chores
-  root 'static#index', as: 'root'
   devise_for :users
   resources :users, only: [:show]
   resources :families
 
-  post 'tasks/:id' => 'tasks#complete'
+  get 'families/:id/users' => 'families#users_index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

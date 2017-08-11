@@ -14,10 +14,11 @@ class TasksController < ApplicationController
     redirect_to chore_path(t.chore)
   end
 
-  def complete
+  def update
     t = Task.find(params[:id])
     if t.user == current_user
       t.update(completion_status: 'complete', completion_date: DateTime.now)
+      t.chore.update(last_completed: DateTime.now)
     end
     redirect_to :back
   end
