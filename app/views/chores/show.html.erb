@@ -13,7 +13,7 @@ ASAP.
   CLAIMED
 <% end %>
 <% if user_has_task?(@chore) %>
-  BY YOU
+  BY YOU <br>
 <% else %>
 <br>
   <%= form_for @task do |f| %>

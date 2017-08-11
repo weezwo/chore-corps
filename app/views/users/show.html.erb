@@ -1,5 +1,6 @@
 <h1>Chores for <%= @user.name %></h1>
 
-<% @user.tasks.each do |task| %>
-<%= poach_or_complete %>
+<% @user.pending_tasks.each do |task| %>
+<%= task.chore.name %> - <span <%= "class='overdue'" if overdue?(task) %>>Due <%= format_due_date(task) %></span>
+<%= poach_or_complete(task) %>
 <% end %>
