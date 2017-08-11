@@ -7,4 +7,8 @@ class User < ActiveRecord::Base
   belongs_to :family
   has_many :tasks
   has_many :chores, through: :tasks
+
+  def pending_tasks
+    self.tasks.select {|task| task.completion_status.nil?}
+  end
 end
