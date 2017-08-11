@@ -8,7 +8,7 @@ This chore should be completed
 ASAP.
 <% end %>
 <br>
-<%= @chore.claimed_chore? %>
+<%= CLAIMED if @chore.claimed_chore? %>
 <% if user_has_task?(@chore) %>
   BY YOU <br>
 <% else %>
