@@ -4,7 +4,7 @@ This chore is done every <%= chore_frequency %>. <br>
 
 This chore should be completed
 <% if @chore.last_completed %>
-  by <%= format_due_date(@chore) %>.
+  by <span class=<%= "overdue" if overdue?(@chore) %>><%= format_due_date(@chore) %>.</span>
 <% else %>
 ASAP.
 <% end %>

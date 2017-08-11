@@ -18,4 +18,8 @@ module ChoresHelper
   def claimed_chore_notice
 
   end
+
+  def overdue?(chore)
+    calculate_due_date(chore) < DateTime.now
+  end
 end
