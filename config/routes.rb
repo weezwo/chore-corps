@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :chores
   root 'static#index', as: 'root'
   devise_for :users
+  resources :users, only: [:show]
   resources :families
 
   # The priority is based upon order of creation: first created -> highest priority.
