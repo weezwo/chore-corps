@@ -12,14 +12,18 @@ module ChoresHelper
   end
 
   def user_has_task?(chore)
-    current_user.tasks.any?{|task| task.chore_id == chore.id}
+    current_user.tasks.any?{|task| task.chore_id == chore.id  && task.completion_status.nil?}
   end
 
   def claimed_chore_notice
 
   end
 
-  def overdue?(chore)
-    calculate_due_date(chore) < DateTime.now
+  def overdue?(object)
+    if object.respond_to? :due_date
+      object.due_date < DateTime.now
+    else
+      calculate_due_date(object) < DateTime.now
+    end
   end
 end
