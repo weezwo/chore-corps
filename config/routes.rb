@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   devise_for :users, path: '', path_names: { sign_up: 'users/sign_up'}
 
+  get 'families/sign_up' => 'families#new', as: 'new_family'
+  get 'families/:id/users' => 'families#users_index'
+
   root 'static#index', as: 'root'
 
   resources :tasks
@@ -9,10 +12,6 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
   resources :families, except: [:new]
-
-  get 'families/sign_up' => 'families#new', as: 'new_family'
-
-  get 'families/:id/users' => 'families#users_index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
