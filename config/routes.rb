@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
+  devise_for :users, path: ''
+
   root 'static#index', as: 'root'
 
   resources :tasks
   resources :chores
-  devise_for :users
+
   resources :users, only: [:show]
   resources :families
 
