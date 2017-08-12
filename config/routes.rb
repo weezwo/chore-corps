@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users, path: ''
+  devise_for :users, path: '', path_names: { sign_up: 'users/sign_up'}
 
   root 'static#index', as: 'root'
 
@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   resources :chores
 
   resources :users, only: [:show]
-  resources :families
+  resources :families, except: [:new]
+
+  get 'families/sign_up' => 'families#new', as: 'new_family'
 
   get 'families/:id/users' => 'families#users_index'
 
