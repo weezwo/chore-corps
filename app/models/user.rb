@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  validates :name, presence: true
+
   belongs_to :family
   has_many :tasks
   has_many :chores, through: :tasks

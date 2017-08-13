@@ -6,8 +6,13 @@ class FamiliesController < ApplicationController
   end
 
   def create
-    @family = Family.create(family_params)
-    redirect_to family_path(@family)
+    @family = Family.new(family_params)
+    if @family.save
+      user = @family.users.build
+      user.update(user_params)
+      sign_in(user)
+      redirect_to family_path(@family)
+    end
   end
 
   def show
@@ -22,6 +27,10 @@ class FamiliesController < ApplicationController
   private
 
   def family_params
-    params.require(:family).permit(:name, :password, :password_confirmation, :users[:name, :password, :password_confirmation])
+    params.require(:family).permit(:name, :password, :password_confirmation)
+  end
+
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end

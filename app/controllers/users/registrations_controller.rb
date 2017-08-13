@@ -7,11 +7,26 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # POST /resource
-  # def create
-  #   super
-  # end
+  # POST /users
+  def create
+    super do
+      family = Family.find_by(name: params[:family][:name])
+      if family && family.authenticate(params[:family][:password])
+        User.last.update(family_id: family.id)
+      else
+        Devise.sign_out_all_scopes
+        User.last.delete
+        redirect_to new_user_registration_path, notice: "Family not found!"
+        break
+      end
+    end
+  end
 
+  private
+
+  def family_params
+    params.require(:family).permit(:name, :password)
+  end
   # GET /resource/edit
   # def edit
   #   super

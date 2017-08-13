@@ -14,8 +14,12 @@
     <%= current_user.name + " " + current_family.name %> |
     <%= link_to "Me", user_path(current_user)%> |
     <%= link_to "My Family", family_path(current_family) %> |
-    <%= link_to "Sign Out", destroy_user_session_path %>
+    <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
     <% else %>
+    Hi, Stranger! |
+    <%= link_to "Sign Up with a New Family", new_family_path %> |
+    <%= link_to "Sign Up with an Existing Family", new_user_registration_path %> |
+    <%= link_to "Sign In", new_user_session_path %>
     <% end %>
     </nav>
   </header>
