@@ -1,7 +1,19 @@
 <h2>Sign up - Existing Family</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: user_registration_path) do |f| %>
   <%= devise_error_messages! %>
+
+  <%= fields_for :family, @user.family do |family_fields| %>
+  <div class="field">
+    <%= family_fields.label :name, "Family Name" %><br />
+    <%= family_fields.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= family_fields.label :password, "Family Password" %><br />
+    <%= family_fields.password_field :password, autofocus: true %>
+  </div>
+  <% end %>
 
   <div class="field">
     <%= f.label :name, "Your Name" %><br />
