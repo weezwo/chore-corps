@@ -15,4 +15,8 @@ class ApplicationController < ActionController::Base
   def calculate_due_date(chore)
     chore.last_completed + chore.cycle
   end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name, :email, :password, :family => [:name, :password]) }
+  end
 end

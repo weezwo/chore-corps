@@ -7,11 +7,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # POST /resource
-  # def create
-  #   super
-  # end
+  # POST /users
+  def create
+    super do
+      family = Family.find_by(name: params[:family][:name])
+      if family && family.authenticate(params[:family][:password])
+        User.last.update(family_id: family.id, name: params[:user][:name])
+      end
+    end
+  end
 
+  private
+
+  def family_params
+    params.require(:family).permit(:name, :password)
+  end
   # GET /resource/edit
   # def edit
   #   super
