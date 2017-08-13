@@ -12,7 +12,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super do
       family = Family.find_by(name: params[:family][:name])
       if family && family.authenticate(params[:family][:password])
-        User.last.update(family_id: family.id, name: params[:user][:name])
+        User.last.update(family_id: family.id)
+      else
+        Devise.sign_out_all_scopes
+        User.last.delete
+        redirect_to new_user_registration_path, notice: "Family not found!"
+        break
       end
     end
   end
