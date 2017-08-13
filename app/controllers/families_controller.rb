@@ -10,8 +10,9 @@ class FamiliesController < ApplicationController
     if @family.save
       user = @family.users.build
       user.update(user_params)
-    sign_in(user)
-    redirect_to family_path(@family)
+      sign_in(user)
+      redirect_to family_path(@family)
+    end
   end
 
   def show
