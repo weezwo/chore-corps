@@ -7,6 +7,6 @@ class Family < ActiveRecord::Base
   validates :password, length: {minimum: 8}
 
   def chores_by_due_date
-    chores.sort_by{|chore| chore.calculate_due_date}.reverse
+    chores.sort_by{|chore| chore.calculate_due_date}
   end
 end
