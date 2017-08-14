@@ -1,5 +1,6 @@
 class FamiliesController < ApplicationController
   before_action :authenticate_user!, only: [:show]
+  before_action :verify_family, only: [:show, :users_index]
 
   def new
     @family = Family.new
@@ -7,9 +8,8 @@ class FamiliesController < ApplicationController
 
   def create
     @family = Family.new(family_params)
-    if @family.save
-      user = @family.users.build
-      user.update(user_params)
+    user = @family.users.new(user_params)
+    if @family.save && user.save
       sign_in(user)
       redirect_to family_path(@family)
     else
