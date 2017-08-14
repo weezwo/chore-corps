@@ -1,11 +1,15 @@
 class ChoresController < ApplicationController
   def new
-    @chore = current_family.chores.build
+    @chore = Chore.new
   end
 
   def create
-    @chore = Chore.create(chore_params)
-    redirect_to family_path(current_family)
+    @chore = Family.find(params[:id]).chores.build(chore_params)
+    if @chore.save
+      redirect_to family_path(current_family)
+    else
+      render template: 'chores/new'
+    end
   end
 
   def show

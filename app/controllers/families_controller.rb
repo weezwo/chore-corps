@@ -12,6 +12,8 @@ class FamiliesController < ApplicationController
       user.update(user_params)
       sign_in(user)
       redirect_to family_path(@family)
+    else
+      render :new
     end
   end
 

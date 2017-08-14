@@ -13,10 +13,6 @@ class ApplicationController < ActionController::Base
     User.find(params[:id]).family == current_family
   end
 
-  def calculate_due_date(chore)
-    chore.last_completed + chore.cycle
-  end
-
   protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:name, :email, :password, :family => [:name, :password]) }
