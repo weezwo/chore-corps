@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, path: 'users', path_names: { sign_up: 'sign_up'}, :controllers  => {:registrations => 'users/registrations'}
 
   get 'families/sign_up' => 'families#new', as: 'new_family'
-  get 'families/:id/users' => 'families#users_index'
+  get 'families/:id/users' => 'families#users_index', as: 'family_users'
   get 'families/:id/users/:user_id' => 'users#show', as: 'user'
 
   get 'families/:id/chores/new' => 'chores#new', as: 'new_chore'
