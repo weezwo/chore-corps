@@ -1,6 +1,15 @@
 <h2>Sign up - New Family</h2>
 
 <%= form_for @family do |f| %>
+
+  <% if @family.errors.any? %>
+  <ul>
+    <% @family.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+  <% end %>
+
   <%= f.label :name, "Family Name" %>
   <%= f.text_field :name %> <br>
 
