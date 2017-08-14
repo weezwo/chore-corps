@@ -5,10 +5,13 @@ Rails.application.routes.draw do
   get 'families/sign_up' => 'families#new', as: 'new_family'
   get 'families/:id/users' => 'families#users_index'
 
+  get 'families/:id/chores/new' => 'chores#new', as: 'new_chore'
+  post 'families/:id/chores' => 'chores#create', as: 'chores'
+
   root 'static#index', as: 'root'
 
   resources :tasks
-  resources :chores
+  resources :chores, except: [:new, :create]
 
   resources :users, only: [:show]
   resources :families, except: [:new]

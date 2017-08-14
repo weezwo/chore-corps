@@ -1,5 +1,14 @@
 <h2><%= @chore.name %></h2>
-This chore is done every <%= format_frequency(@chore) %>. <br>
+
+<% if !@chore.notes.blank? %>
+<%= @chore.notes %><br><br>
+<% end %>
+
+<% if @chore.frequency %>
+This chore is done every <%= format_frequency(@chore) %>.
+<% else %>
+This is a one-time chore!
+<% end %><br>
 
 This chore should be completed
 <% if @chore.last_completed %>
@@ -7,8 +16,8 @@ This chore should be completed
 <% else %>
 ASAP.
 <% end %>
-<br>
-<%= CLAIMED if @chore.claimed_chore? %>
+<br><br>
+<%= "CLAIMED" if @chore.claimed_chore? %>
 <% if user_has_task?(@chore) %>
   BY YOU <br>
 <% else %>
@@ -19,3 +28,5 @@ ASAP.
   <%= f.submit "Claim this Chore!" %>
   <% end %>
 <% end %>
+<br>
+<%= link_to "Back to Family Page", family_path(@chore.family) %>

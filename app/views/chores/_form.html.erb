@@ -1,7 +1,13 @@
 <%= form_for @chore do |f| %>
-<%= f.hidden_field :family_id, value: current_family.id %>
-<%= f.label :name %>: <%= f.text_field :name %> <br>
-<%= f.label :cycle %>: <%= f.select :cycle, options_for_select(cycle_opts), include_blank: true%> <br>
-<%= f.label :notes %>: <%= f.text_area :notes %> <br>
+<% if @chore.errors.any? %>
+<ul>
+  <% @chore.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+</ul>
+<% end %>
+<%= f.label :name, "Name:" %> <%= f.text_field :name %> <br>
+<%= f.label :cycle, "Cycle:" %> <%= f.select :cycle, options_for_select(cycle_opts) %> <br>
+<%= f.label :notes, "Notes:" %> <%= f.text_area :notes %> <br>
 <%= f.submit %>
 <% end %>
