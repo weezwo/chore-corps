@@ -3,7 +3,7 @@ module ApplicationHelper
     if object.respond_to? :due_date
       date = object.due_date
     else
-      date = calculate_due_date(object)
+      date = object.calculate_due_date
     end
     date.strftime("%A, %B %e")
   end

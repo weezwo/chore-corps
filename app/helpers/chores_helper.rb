@@ -8,6 +8,10 @@ module ChoresHelper
 
   end
 
+  def cycle_opts
+    Chore.cycle_opts
+  end
+
   def format_frequency(chore)
     pluralize chore.frequency, "day"
   end
@@ -16,7 +20,7 @@ module ChoresHelper
     if object.respond_to? :due_date
       object.due_date < DateTime.now
     else
-      calculate_due_date(object) < DateTime.now
+      object.calculate_due_date < DateTime.now
     end
   end
 end
