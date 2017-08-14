@@ -4,6 +4,10 @@ class Chore < ActiveRecord::Base
 
   validates :name, presence: true
 
+  def calculate_due_date
+    number_of_seconds = self.cycle ? self.cycle.seconds : 0.seconds
+    self.last_completed || self.created_at + number_of_seconds
+  end
 
   def self.cycle_opts
     [["Daily", "86400"], ["Weekly","604800"], ["Monthly","2592000"], ["Seasonally", "7776000"], ["Yearly","31557600"]]
@@ -14,6 +18,6 @@ class Chore < ActiveRecord::Base
   end
 
   def frequency
-    cycle / 86400
+    cycle ? cycle / 86400 : nil
   end
 end
