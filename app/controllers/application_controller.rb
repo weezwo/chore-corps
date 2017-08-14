@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   def verify_family
     if User.find(current_user.id).family != Family.find(params[:id])
-      redirect_to family_path(current_family), notice: "That is not your family!"
+      redirect_to :back, notice: "That is not your family!"
     end
   end
 

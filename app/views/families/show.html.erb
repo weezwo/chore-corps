@@ -1,6 +1,6 @@
 HEY!
-Your name is <%= current_user.name %> and you belong to the <%= current_family.name %> family!
-<div class="chore"><%= link_to "New Chore", new_chore_path(current_family) %></div>
+Your name is <%= @user.name %> and you belong to the <%= @family.name %> family!
+<div class="chore"><%= link_to "New Chore", new_chore_path(@family) %></div>
 
 </div>
 <% current_family.chores_by_due_date.each do |chore| %>

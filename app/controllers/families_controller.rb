@@ -18,6 +18,8 @@ class FamiliesController < ApplicationController
   end
 
   def show
+    @user = current_user
+    @family = current_family
   end
 
   def users_index
