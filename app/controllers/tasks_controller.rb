@@ -23,6 +23,10 @@ class TasksController < ApplicationController
     redirect_to :back
   end
 
+  def last_completed
+    @task = Task.last_completed
+  end
+
   private
   def task_params
     params.require(:task).permit(:user_id, :chore_id)

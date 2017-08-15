@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users, path: 'users', path_names: { sign_up: 'sign_up'}, :controllers  => {:registrations => 'users/registrations'}
+  devise_for :users, path: 'users', path_names: { sign_up: 'sign_up'}, :controllers  => {:registrations => 'users/registrations', :omniauth_callbacks => "users/omniauth_callbacks"}
 
   get 'families/sign_up' => 'families#new', as: 'new_family'
   get 'families/:id/users' => 'families#users_index', as: 'family_users'
@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   post 'families/:id/chores' => 'chores#create', as: 'chores'
 
   root 'static#index', as: 'root'
+
+  get 'tasks/last_completed' => 'tasks#last_completed', as: 'last_completed_task'
 
   resources :tasks
   resources :chores, except: [:new, :create]
