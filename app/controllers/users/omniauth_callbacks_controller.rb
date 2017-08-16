@@ -1,6 +1,21 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # You should configure your model like this:
   # devise :omniauthable, omniauth_providers: [:twitter]
+  skip_before_filter :require_no_authentication
+
+  def google_oauth2
+    user = ::User.from_omniauth(request.env['omniauth.auth'])
+    user.family = current_family if current_user
+
+    if user.family && user.persisted?
+      flash[:notice] = I18n.t("devise.omniauth_callbacks.success", kind: "Google")
+      sign_in_and_redirect user, event: :authentication
+    else
+      session["devise.google_data"] = oauth_response.except(:extra)
+      params[:error] = :account_not_found
+      do_failure_things
+    end
+  end
 
   # You should also create an action method in this controller like this:
   # def twitter
