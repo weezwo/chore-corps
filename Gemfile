@@ -28,7 +28,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'devise'
 
-gem 'omniauth-facebook'
+gem "omniauth-google-oauth2", "~> 0.2.1"
 
 # Use Unicorn as the app server
 # gem 'unicorn'

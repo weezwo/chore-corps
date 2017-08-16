@@ -2,7 +2,13 @@
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
 
-  config.omniauth :facebook, "851622451661010", "09f1de719275213942a1144d1195b3c8"
+  Rails.application.config.middleware.use OmniAuth::Builder do
+    provider :google_oauth2, Rails.application.secrets.google_client_id, Rails.application.secrets.google_client_secret
+  end
+
+  # config.omniauth :google_oauth2, client_id: ENV["GOOGLE_CLIENT_ID"], ENV["GOOGLE_CLIENT_SECRET"], {
+  # scope: "email"
+  # }
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
