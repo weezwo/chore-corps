@@ -19,11 +19,14 @@ class FamiliesController < ApplicationController
 
   def show
     @user = current_user
-    @family = current_family
+    #@family = current_family
+    @family = Family.find(params[:id])
   end
 
   def users_index
     @family = Family.find(params[:id])
+    @user = current_user
+    @task = @user.tasks.build
     @users = @family.users
     render template: 'users/index'
   end
