@@ -14,11 +14,11 @@
   <%= f.text_field :name %> <br>
 
   <%= f.label :password, "Family Password" %> <br>
-  <%= f.text_field :password %> <span class="aside"> <br>
+  <%= f.password_field :password %> <span class="aside"> <br>
     (*Members of your family will enter this password when they make an account!)</span> <br>
 
   <%= f.label :password_confirmation, "Confirm Password" %><br>
-  <%= f.text_field :password_confirmation %> <br> <br>
+  <%= f.password_field :password_confirmation %> <br> <br>
 
   <%= fields_for :user, @family.users.build do |user|%>
     <%= user.label :name, "Your Name" %><br>
@@ -34,5 +34,6 @@
     <%= user.password_field :password_confirmation %> <br>
     <span class="aside">(*You will use this password when you log in!)</span> <br>
   <% end %>
+  <br>
   <%= f.submit %>
 <% end %>
