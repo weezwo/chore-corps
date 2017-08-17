@@ -1,4 +1,6 @@
 <% @users.each do |user| %>
 <%= render :partial => "users/pending", :locals => {:user => user} %>
-<%= link_to "#{user.name}'s page", user_path(user.family, user)%>
+<br><%= link_to "#{user.name}'s page", user_path(user.family, user)%>
 <% end %>
+<br><br>
+<div class="aside"><%= link_to "Add a Family Member with Google", user_google_oauth2_omniauth_authorize_path %></div>

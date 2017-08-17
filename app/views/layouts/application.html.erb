@@ -10,14 +10,13 @@
 </head>
 <body>
   <header>
-    <h1>ChoreCorps</h1>
+    <a href="/"><h1>ChoreCorps</h1></a>
     <nav>
     <% if signed_in? %>
     <%= current_user.name + " " + current_family.name %> |
     <%= link_to "Me", user_path(current_family, current_user)%> |
     <%= link_to "My Family", family_users_path(current_family) %> |
     <%= link_to "Our Chores", family_path(current_family) %> |
-    <%= link_to "Add Member with Google", user_google_oauth2_omniauth_authorize_path %> |
     <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
     <% else %>
     Hi, Stranger! |
