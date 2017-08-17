@@ -30,6 +30,10 @@ h1 {
   /*font-size: 400%;*/
 }
 
+a h1 {
+  color: #000;
+}
+
 a {
   text-decoration: none;
   color: #B59E26;
@@ -39,9 +43,13 @@ a:hover {
   color: #523B91;
 }
 
-main, nav {
-  background: rgba(255, 255, 255, 0.8);
-  background: linear-gradient(to right, rgba(255, 255, 255, .4), rgba(255, 255, 255, 1), rgba(255, 255, 255, .4));
+nav, main {
   max-width: 80%;
   margin: auto;
+  background: rgba(255, 255, 255, 0.8);
+  background: linear-gradient(to right, rgba(255, 255, 255, .4), rgba(255, 255, 255, 1), rgba(255, 255, 255, .4));
+}
+
+.aside {
+  font-size: 75%;
 }
