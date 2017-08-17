@@ -29,4 +29,6 @@ ASAP.
   <% end %>
 <% end %>
 <br>
+<%= link_to "Edit Chore", edit_chore_path(@chore) %> | <%= link_to "Delete Chore", chore_path(@chore), method: :delete %>
+<br>
 <%= link_to "Back to Family Page", family_path(@chore.family) %>
