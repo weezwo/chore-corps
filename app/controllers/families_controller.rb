@@ -1,5 +1,5 @@
 class FamiliesController < ApplicationController
-  before_action :authenticate_user!, only: [:show]
+  before_action :authenticate_user!, only: [:show, :users_index]
   before_action :verify_family, only: [:show, :users_index]
 
   def new
@@ -25,8 +25,6 @@ class FamiliesController < ApplicationController
 
   def users_index
     @family = Family.find(params[:id])
-    @user = current_user
-    @task = @user.tasks.build
     @users = @family.users
     render template: 'users/index'
   end
