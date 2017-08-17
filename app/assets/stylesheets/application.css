@@ -50,9 +50,23 @@ nav, main {
   margin: auto;
   background: rgba(255, 255, 255, 0.8);
   background: linear-gradient(to right, rgba(255, 255, 255, .4), rgba(255, 255, 255, 1), rgba(255, 255, 255, .4));
-  padding-bottom: 20px;
+  padding: 10px;
 }
 
 .aside {
   font-size: 75%;
+}
+
+.chore {
+  padding: 10px 10px;
+  margin: 5px;
+  display: inline-block;
+  border: solid #777;
+  text-align: center;
+  border-radius: 3px;
+  box-shadow: 3px 3px 2px #aaa;
+}
+
+.overdue {
+  color: maroon;
 }
