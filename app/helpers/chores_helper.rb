@@ -4,10 +4,6 @@ module ChoresHelper
     current_user.tasks.any?{|task| task.chore_id == chore.id  && task.completion_status == 'pending'}
   end
 
-  def claimed_chore_notice
-
-  end
-
   def cycle_opts
     Chore.cycle_opts
   end
