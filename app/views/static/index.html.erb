@@ -1,3 +1,10 @@
 Welcome to Chore Corps!
-
-<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+<br><br>
+<% if signed_in? %>
+Click...<br>
+<strong>Me</strong> for a list of your chores, as well as a link to all of the chores you've completed.<br>
+<strong>My Family</strong> to see this information for all of your family members.<br>
+<strong>Our Chores</strong> to see all family chores and claim the ones you want.
+<% else %>
+Sign up or log in above!
+<% end %>
