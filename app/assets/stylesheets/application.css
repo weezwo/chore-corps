@@ -14,7 +14,11 @@
  *= require_self
  */
 
- body {
+*:focus {
+    outline: none;
+}
+
+body {
    background-image: url("doodles.png");
    text-align: center;
    font-family: 'Antic Slab', serif;
@@ -79,3 +83,29 @@ button, input[type=submit] {
   border-radius: 3px;
   box-shadow: 3px 3px 2px #aaa;
 }
+
+input[type=text], input[type=password], input[type=email], textarea {
+    font-size: 100%;
+    font-family: 'Antic Slab', serif;
+    margin: 10px;
+    border: none;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+  }
+
+  textarea {
+    /*font-size: 150%;
+    font-family: serif;
+    margin: 10px;
+    border: none;
+    width: 100%;
+    border-bottom: 2px solid #ddd;*/
+    resize: vertical;
+    height: 5;
+  }
+
+  select {
+    font-size: 100%;
+    font-family: 'Antic Slab', serif;
+    background: #fff;
+  }
