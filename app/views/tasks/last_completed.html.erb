@@ -1,6 +1,8 @@
 <h2>Last Completed Task</h2>
 
-The last task to be completed was by <%= @task.user.name %> from the  <%= @task.user.family.name %> family at <%= @task.completion_date %>. The task was thus:
+The last task to be completed was by <%= @task.user.name %> from the  <%= @task.user.family.name %> family on <%= format_date(@task.completion_date) %> at <%= format_time(@task.completion_date) %>.
+<br>
+The task was thus:
 
 <h3><%= @task.chore.name %></h3>
 
