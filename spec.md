@@ -14,7 +14,8 @@ Specs:
   Chore - presence of name
   Family - uniqueness of name, length of password
   User - devise - adds presence of name
-- [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+- [x] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+  tasks/last_completed
 - [x] Include a nested form writing to an associated model using a custom attribute writer (form URL, model name e.g. /recipe/new, Item)
   families/new creates a user with a nested form
 - [x] Include signup (how e.g. Devise)
@@ -23,8 +24,8 @@ Specs:
   Devise
 - [x] Include logout (how e.g. Devise)
   Devise
-- [ ] Include third party signup/login (how e.g. Devise/OmniAuth)
-
+- [x] Include third party signup/login (how e.g. Devise/OmniAuth)
+  Devise/Omniauth
 - [x] Include nested resource show or index (URL e.g. users/2/recipes)
   families/:id/users
 - [x] Include nested resource "new" form (URL e.g. recipes/1/ingredients)
@@ -34,7 +35,7 @@ Specs:
   families/:id/chores/new
 
 Confirm:
-- [ ] The application is pretty DRY
-- [ ] Limited logic in controllers
-- [ ] Views use helper methods if appropriate
-- [ ] Views use partials if appropriate
+- [x] The application is pretty DRY
+- [x] Limited logic in controllers
+- [x] Views use helper methods if appropriate
+- [x] Views use partials if appropriate
