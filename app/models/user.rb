@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   has_many :chores, through: :tasks
 
   def completed_tasks
-    self.tasks.select {|task| task.completion_status == 'complete'}
+    self.tasks.order(:completion_date).select {|task| task.completion_status == 'complete'}
   end
 
   def pending_tasks
