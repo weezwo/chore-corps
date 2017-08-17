@@ -1,10 +1,14 @@
 <h1>Chores for <%= user.name %></h1>
 
 <% if user.pending_tasks.count > 0 %>
-    <% user.pending_tasks.each do |task| %>
-    <%= task.chore.name %> - <span <%= "class='overdue'" if overdue?(task) %>>Due <%= format_due_date(task) %></span>
-    <%= poach_or_complete(task) %>
+  <% user.pending_tasks.each do |task| %>
+    <%= link_to task.chore.name, chore_path(task.chore) %> - <span <%= "class='overdue'" if overdue?(task) %>>Due <%= format_due_date(task) %></span>
+    <% if task.user == current_user %>
+      <%= form_for task do |f| %>
+      <%= f.submit "Complete this Chore!" %>
+      <% end %>
     <% end %>
+  <% end %>
 <% else %>
   <p>No chores!</p>
 <% end %>
