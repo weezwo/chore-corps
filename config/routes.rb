@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'families/sign_up' => 'families#new', as: 'new_family'
   get 'families/:id/users' => 'families#users_index', as: 'family_users'
   get 'families/:id/users/:user_id' => 'users#show', as: 'user'
+  get 'families/:id/users/:user_id/complete' => 'users#show_complete', as: 'user_complete'
 
   get 'families/:id/chores/new' => 'chores#new', as: 'new_chore'
   post 'families/:id/chores' => 'chores#create', as: 'chores'
