@@ -11,6 +11,10 @@ class User < ActiveRecord::Base
   has_many :tasks
   has_many :chores, through: :tasks
 
+  def completed_tasks
+    self.tasks.select {|task| task.completion_status == 'complete'}
+  end
+
   def pending_tasks
     self.tasks.select {|task| task.completion_status == 'pending'}
   end
