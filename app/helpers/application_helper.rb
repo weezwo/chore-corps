@@ -5,6 +5,10 @@ module ApplicationHelper
     else
       date = object.calculate_due_date
     end
+    format_date(date)
+  end
+
+  def format_date(date)
     date.strftime("%A, %B %e")
   end
 end

@@ -6,9 +6,9 @@ module UsersHelper
         f.submit "Complete this Chore!"
       end
     else
-      form_for @task do |f| #form_for @task, as:"task" do |f|
-      f.hidden_field [:chore_id], value: task.chore.id
-      f.hidden_field [:user_id], value: current_user.id
+      form_for current_user.tasks.new do |f| #form_for @task, as:"task" do |f|
+      f.hidden_field :chore_id, value: task.chore.id
+      f.hidden_field :user_id, value: current_user.id
       f.submit "Claim this Chore!"
       end
     end
