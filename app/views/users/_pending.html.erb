@@ -12,3 +12,5 @@
 <% else %>
   <p>No chores!</p>
 <% end %>
+
+<%= link_to "#{user.name}'s Completed Chores", user_complete_path(user.family, user) %>
