@@ -50,12 +50,17 @@ a:hover {
   color: #523B91;
 }
 
-nav, main {
+nav, main, footer {
   max-width: 80%;
   margin: auto;
   background: rgba(255, 255, 255, 0.8);
   background: linear-gradient(to right, rgba(255, 255, 255, .4), rgba(255, 255, 255, 1), rgba(255, 255, 255, .4));
   padding: 10px;
+}
+
+footer {
+  padding: 25px 0;
+  font-size: 65%;
 }
 
 .aside {
@@ -95,14 +100,7 @@ input[type=text], input[type=password], input[type=email], textarea {
   }
 
   textarea {
-    /*font-size: 150%;
-    font-family: serif;
-    margin: 10px;
-    border: none;
-    width: 100%;
-    border-bottom: 2px solid #ddd;*/
     resize: vertical;
-    height: 5;
   }
 
   select {
