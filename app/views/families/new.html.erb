@@ -10,27 +10,29 @@
   </ul>
   <% end %>
 
-  <%= f.label :name, "Family Name" %>
+  <%= f.label :name, "Family Name" %> <br>
   <%= f.text_field :name %> <br>
 
-  <%= f.label :password, "Family Password" %>
-  <%= f.text_field :password %> <span class="aside">(*Members of your family will enter this password when they make an account!)</span> <br>
+  <%= f.label :password, "Family Password" %> <br>
+  <%= f.text_field :password %> <span class="aside"> <br>
+    (*Members of your family will enter this password when they make an account!)</span> <br>
 
-  <%= f.label :password_confirmation, "Confirm Password" %>
+  <%= f.label :password_confirmation, "Confirm Password" %><br>
   <%= f.text_field :password_confirmation %> <br> <br>
 
   <%= fields_for :user, @family.users.build do |user|%>
-    <%= user.label :name, "Your Name" %>
+    <%= user.label :name, "Your Name" %><br>
     <%= user.text_field :name %> <br>
 
-    <%= user.label :email, "Your Email" %>
+    <%= user.label :email, "Your Email" %><br>
     <%= user.email_field :email %> <br>
 
-    <%= user.label :password, "Your Password" %>
+    <%= user.label :password, "Your Password" %><br>
     <%= user.password_field :password %> <br>
 
-    <%= user.label :password_confirmation, "Confirm Password" %>
-    <%= user.password_field :password_confirmation %> <span class="aside">(*You will use this password when you log in!)</span> <br>
+    <%= user.label :password_confirmation, "Confirm Password" %><br>
+    <%= user.password_field :password_confirmation %> <br>
+    <span class="aside">(*You will use this password when you log in!)</span> <br>
   <% end %>
   <%= f.submit %>
 <% end %>
