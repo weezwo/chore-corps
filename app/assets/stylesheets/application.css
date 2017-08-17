@@ -22,12 +22,14 @@
  }
 
 h1, h2 {
-  font-family: 'Coming Soon', cursive;
+  font-family: 'Fredericka the Great', sans-serif;
+  font-weight: 200;
 }
 
 h1 {
   letter-spacing: .3em;
-  /*font-size: 400%;*/
+  font-size: 275%;
+  text-transform: uppercase;
 }
 
 a h1 {
@@ -48,6 +50,7 @@ nav, main {
   margin: auto;
   background: rgba(255, 255, 255, 0.8);
   background: linear-gradient(to right, rgba(255, 255, 255, .4), rgba(255, 255, 255, 1), rgba(255, 255, 255, .4));
+  padding-bottom: 20px;
 }
 
 .aside {
