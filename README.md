@@ -8,6 +8,7 @@ To begin developing/tinkering with ChoreCorps, run:
 
 ```
 $ bundle install
+$ rake db:migrate
 ```
 
 To run your own local development server, run
