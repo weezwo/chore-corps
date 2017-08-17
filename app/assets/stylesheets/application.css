@@ -61,7 +61,7 @@ nav, main {
   padding: 10px 10px;
   margin: 5px;
   display: inline-block;
-  border: solid #777;
+  border: 2px solid #777;
   text-align: center;
   border-radius: 3px;
   box-shadow: 3px 3px 2px #aaa;
@@ -69,4 +69,13 @@ nav, main {
 
 .overdue {
   color: maroon;
+}
+
+button, input[type=submit] {
+  font-size: 100%;
+  font-family: 'Antic Slab', serif;
+  background-color: #fff;
+  /*border: solid #777;*/
+  border-radius: 3px;
+  box-shadow: 3px 3px 2px #aaa;
 }
