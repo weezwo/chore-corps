@@ -1,4 +1,5 @@
 class ChoresController < ApplicationController
+  before_action :set_chore, only: [:show, :edit, :update, :delete]
   def new
     @chore = Chore.new
   end
@@ -13,16 +14,31 @@ class ChoresController < ApplicationController
   end
 
   def show
-    @chore = Chore.find(params[:id])
     @task = @chore.tasks.build
   end
 
   def edit
-    @chore = chore.find(params[:id])
+  end
+
+  def update
+    if @chore.update(chore_params)
+      redirect_to chore_path(@chore)
+    else
+      render template: 'chores/edit'
+    end
+  end
+
+  def destroy
+    @chore.delete
+    redirect_to family_path(current_family)
   end
 
   private
   def chore_params
     params.require(:chore).permit(:name, :notes, :cycle, :family_id)
+  end
+
+  def set_chore
+    @chore = Chore.find(params[:id])
   end
 end
