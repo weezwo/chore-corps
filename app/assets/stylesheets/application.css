@@ -13,3 +13,35 @@
  *= require_tree .
  *= require_self
  */
+
+ body {
+   background-image: url("doodles.png");
+   text-align: center;
+   font-family: 'Antic Slab', serif;
+   font-size: 140%;
+ }
+
+h1, h2 {
+  font-family: 'Coming Soon', cursive;
+}
+
+h1 {
+  letter-spacing: .3em;
+  /*font-size: 400%;*/
+}
+
+a {
+  text-decoration: none;
+  color: #B59E26;
+}
+
+a:hover {
+  color: #523B91;
+}
+
+main, nav {
+  background: rgba(255, 255, 255, 0.8);
+  background: linear-gradient(to right, rgba(255, 255, 255, .4), rgba(255, 255, 255, 1), rgba(255, 255, 255, .4));
+  max-width: 80%;
+  margin: auto;
+}
