@@ -20,7 +20,7 @@
   <%= f.label :password_confirmation, "Confirm Password" %><br>
   <%= f.password_field :password_confirmation %> <br> <br>
 
-  <%= fields_for :user, @family.users.build do |user|%>
+  <%= f.fields_for :users, @user do |user|%>
     <%= user.label :name, "Your Name" %><br>
     <%= user.text_field :name %> <br>
 
