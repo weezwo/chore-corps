@@ -10,12 +10,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if user.family && user.persisted?
       flash[:notice] = I18n.t("devise.omniauth_callbacks.success", kind: "Google")
       sign_in_and_redirect user, event: :authentication
-    # elsif oauth.response
-    #   session["devise.google_data"] = oauth_response.except(:extra)
-    #   params[:error] = :account_not_found
-    #   do_failure_things
     else
-      redirect_to new_user_session_path, flash[:alert] = "Something went wrong. Another signed in family member must authorize account"
+      session["devise.google_data"] = oauth_response.except(:extra)
+      params[:error] = :account_not_found
+      do_failure_things
     end
   end
 
