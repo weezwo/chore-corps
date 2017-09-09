@@ -27,6 +27,9 @@
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
     <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path %><br />
-    <div class="aside">NB: This link will only work if you have ALREADY linked your account through Google.</div>
+    <div class="aside">NB: This link will only work if you have ALREADY linked your account through Google.
+      <br>
+      To do this, have a family member sign in and add you through Google.
+    </div>
   <% end -%>
 <% end -%>
