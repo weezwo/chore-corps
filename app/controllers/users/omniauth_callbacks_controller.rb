@@ -7,13 +7,18 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     user = ::User.from_omniauth(request.env['omniauth.auth'])
     user.family = current_family if current_user
 
-    if user.family && user.persisted?
-      flash[:notice] = I18n.t("devise.omniauth_callbacks.success", kind: "Google")
-      sign_in_and_redirect user, event: :authentication
+    if user.family
+      if user.persisted?
+        flash[:notice] = I18n.t("devise.omniauth_callbacks.success", kind: "Google")
+        sign_in_and_redirect user, event: :authentication
+      else
+        session["devise.google_data"] = oauth_response.except(:extra)
+        params[:error] = :account_not_found
+        do_failure_things
+      end
     else
-      session["devise.google_data"] = oauth_response.except(:extra)
-      params[:error] = :account_not_found
-      do_failure_things
+      flash[:notice] = "A family member needs to be logged in to complete this action!"
+      redirect_to new_user_session_path
     end
   end
 
