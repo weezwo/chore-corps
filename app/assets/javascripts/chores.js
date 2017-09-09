@@ -3,10 +3,10 @@ class Chore {
     this.id = obj.id;
     this.name = obj.name;
     this.cycle = obj.cycle;
-    this.last_completed = obj.last_completed;
+    this.last_completed = Date.parse(obj.last_completed);
     this.notes = obj.notes;
-    this.created_at = obj.created_at;
-    this.updated_at = obj.updated_at;
+    this.created_at = Date.parse(obj.created_at);
+    this.updated_at = Date.parse(obj.updated_at);
   }
 
   frequency() {
@@ -14,7 +14,14 @@ class Chore {
   }
 
   formatFrequency() {
-    var pluralizedDay = this.frequency() === 1 ? "day" : "days"
-    return `${this.frequency()} ${pluralizedDay}`
+    return this.frequency() === 1 ? "day" : `${this.frequency()} days`;
+  }
+
+  calculateDueDate() {
+    return (this.last_completed || this.created_at) + this.cycle * 1000
+  }
+
+  formatDueDate() {
+    return moment(this.calculateDueDate()).format('dddd, MMMM Do')
   }
 }
