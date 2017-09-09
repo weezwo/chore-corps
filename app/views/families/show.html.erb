@@ -30,6 +30,7 @@
 <script type="text/javascript" charset="utf-8">
 
 function getChore(button){
+  $("#chore-display").empty();
   var choreTemplate = Handlebars.compile($("#chore-template").html());
   $.get(`/chores/${$(button).data("id")}`, function(chore){
     choreObj = new Chore(chore)
