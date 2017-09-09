@@ -16,7 +16,7 @@ class ChoresController < ApplicationController
 
   def show
     @task = @chore.tasks.build
-    render json: @chore
+    render json: @chore, include: ['tasks.user']
   end
 
   def edit
