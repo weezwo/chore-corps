@@ -27,6 +27,22 @@
   </p>
 </script>
 
+<script id="tasks-template" type="text/x-handlebars-template">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Due Date</th>
+      <th>Status</th>
+    </tr>
+    {{#each task}}
+    <tr>
+      <td>{{ name }}</td>
+      <td>{{ dueDate }}</td>
+      <td>{{ completionStatus }}</td>
+    </tr>
+  </table>
+</script>
+
 <script type="text/javascript" charset="utf-8">
 
 function getChore(button){
