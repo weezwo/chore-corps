@@ -5,3 +5,13 @@
 <% current_family.chores_by_due_date.each do |chore| %>
 <div class="chore"><%= link_to chore.name, chore_path(chore) %></div>
 <% end %>
+
+<div id="chore-display">
+
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  $(function(){
+    $("#chore-display").text("YO!")
+  })
+</script>
