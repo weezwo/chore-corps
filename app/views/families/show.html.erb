@@ -5,13 +5,21 @@
 <% current_family.chores_by_due_date.each do |chore| %>
 <div class="chore" data-id="<%= chore.id %>"><%= chore.name %></div>
 <% end %>
-<br><br>
 <div id="chore-display">
 
 </div>
 
 <script id="chore-template" type="text/x-handlebars-template">
   <h2>{{ name }}</h2>
+  <p>{{ notes }}</p>
+  <p>This chore should be done every {{ formatFrequency }}.</p>
+  <p> This chore should be completed
+  {{#if last_completed }}
+  by {{ formatDueDate }}.
+  {{else}}
+  ASAP.
+  {{/if}}
+  </p>
 </script>
 
 <script type="text/javascript" charset="utf-8">
