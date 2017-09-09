@@ -7,6 +7,14 @@ class Chore {
     this.notes = obj.notes;
     this.created_at = obj.created_at;
     this.updated_at = obj.updated_at;
-    console.log(this.name);
+  }
+
+  frequency() {
+    return this.cycle / 86400
+  }
+
+  formatFrequency() {
+    var pluralizedDay = this.frequency() === 1 ? "day" : "days"
+    return `${this.frequency()} ${pluralizedDay}`
   }
 }
