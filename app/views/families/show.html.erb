@@ -3,7 +3,7 @@
 
 </div>
 <% current_family.chores_by_due_date.each do |chore| %>
-<div class="chore"><%= link_to chore.name, chore_path(chore) %></div>
+<div class="chore" data-id="<%= chore.id %>"><%= chore.name %></div>
 <% end %>
 <br><br>
 <div id="chore-display">
@@ -11,7 +11,16 @@
 </div>
 
 <script type="text/javascript" charset="utf-8">
+
+function getChore(button){
+  $.get(`/chores/${$(button).data("id")}`, function(chore){
+    choreObj = new Chore(chore)
+  });
+}
   $(function(){
+    $(".chore").on('click', function(){
+      getChore(this);
+    })
     $("#chore-display").text("YO!")
   })
 </script>
