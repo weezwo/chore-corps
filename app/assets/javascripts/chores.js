@@ -24,4 +24,8 @@ class Chore {
   formatDueDate() {
     return moment(this.calculateDueDate()).format('dddd, MMMM Do')
   }
+
+  isOverdue() {
+    return this.calculateDueDate() < Date.now();
+  }
 }
