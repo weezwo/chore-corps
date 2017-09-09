@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'families/:id/users/:user_id/complete' => 'users#show_complete', as: 'user_complete'
 
   get 'families/:id/chores/new' => 'chores#new', as: 'new_chore'
+  get 'families/:id/chores' => 'chores#index', as: 'chore_index'
   post 'families/:id/chores' => 'chores#create', as: 'chores'
 
   root 'static#index', as: 'root'

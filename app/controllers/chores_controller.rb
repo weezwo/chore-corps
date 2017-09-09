@@ -1,5 +1,11 @@
 class ChoresController < ApplicationController
   before_action :set_chore, only: [:show, :edit, :update, :delete]
+
+  def index
+    @family = Family.find(params[:id])
+    render json: @family.chores, each_serializer: FamilyChoreSerializer
+  end
+
   def new
     @chore = Chore.new
   end
