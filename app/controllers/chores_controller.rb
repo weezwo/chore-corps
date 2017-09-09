@@ -7,7 +7,8 @@ class ChoresController < ApplicationController
   def create
     @chore = Family.find(params[:id]).chores.build(chore_params)
     if @chore.save
-      redirect_to family_path(current_family)
+      #redirect_to family_path(current_family)
+      render json: @chore, status: 201
     else
       render template: 'chores/new'
     end
@@ -15,6 +16,7 @@ class ChoresController < ApplicationController
 
   def show
     @task = @chore.tasks.build
+    render json: @chore
   end
 
   def edit
