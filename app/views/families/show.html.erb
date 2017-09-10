@@ -25,6 +25,7 @@
   ASAP.
   {{/if}}
   </p>
+  <button onclick="showTasks();">Show Tasks</button>
 </script>
 
 <script id="tasks-template" type="text/x-handlebars-template">
@@ -57,12 +58,27 @@ function getChore(button){
     $("#chore-display").html(result)
   });
 }
+
+function showTasks(){
+  var tasksTemplate = Handlebars.compile($("#tasks-template").html());
+  result = tasksTemplate(choreObj);
+  console.log(result);
+  $("#chore-display").append(result);
+}
   $(function(){
+    attachOnLoadListeners();
+    $("#chore-display").text("YO!");
+  });
+
+  function attachOnLoadListeners(){
     $(".chore").on('click', function(){
       getChore(this);
     })
-    $("#chore-display").text("YO!")
-
-
-  });
+  }
+  function attachTasksListener(){
+    $("#tasks-button").on('click', function(){
+      console.log("made it")
+      showTasks();
+    });
+  }
 </script>
