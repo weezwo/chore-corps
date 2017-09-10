@@ -26,6 +26,7 @@
   {{/if}}
   </p>
   <button onclick="showTasks();">Show Tasks</button>
+  <div id="tasks-display"></div>
 </script>
 
 <script id="tasks-template" type="text/x-handlebars-template">
@@ -36,11 +37,11 @@
       <th>Completion Date</th>
       <th>Status</th>
     </tr>
-    {{#each task}}
+    {{#each this}}
     <tr>
-      <td>{{ userName }}</td>
-      <td>{{ dueDate }}</td>
-      <td>{{ completionDate }}</td>
+      <td>{{ this.userName }}</td>
+      <td>{{ formatDueDate }}</td>
+      <td>{{ formatCompletionDate }}</td>
       <td>{{ completionStatus }}</td>
     </tr>
     {{/each}}
@@ -61,9 +62,8 @@ function getChore(button){
 
 function showTasks(){
   var tasksTemplate = Handlebars.compile($("#tasks-template").html());
-  result = tasksTemplate(choreObj);
-  console.log(result);
-  $("#chore-display").append(result);
+  result = tasksTemplate(choreObj.tasks);
+  $("#tasks-display").html(result);
 }
   $(function(){
     attachOnLoadListeners();
@@ -74,11 +74,5 @@ function showTasks(){
     $(".chore").on('click', function(){
       getChore(this);
     })
-  }
-  function attachTasksListener(){
-    $("#tasks-button").on('click', function(){
-      console.log("made it")
-      showTasks();
-    });
   }
 </script>
