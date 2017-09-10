@@ -9,7 +9,6 @@ class Chore {
     this.updated_at = Date.parse(obj.updated_at);
     this.tasks = [];
     for(let i = 0; i < obj.tasks.length; i++){
-      console.log(obj.tasks[i])
       this.tasks.push(new Task(obj.tasks[i]));
     }
   }
