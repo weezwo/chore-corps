@@ -108,3 +108,12 @@ input[type=text], input[type=password], input[type=email], textarea {
     font-family: 'Antic Slab', serif;
     background: #fff;
   }
+
+  table {
+    margin: auto;
+    padding: 25px;
+  }
+
+  td {
+    padding: 10px;
+  }
