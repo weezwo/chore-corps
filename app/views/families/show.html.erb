@@ -32,12 +32,14 @@
     <tr>
       <th>Name</th>
       <th>Due Date</th>
+      <th>Completion Date</th>
       <th>Status</th>
     </tr>
     {{#each task}}
     <tr>
-      <td>{{ name }}</td>
+      <td>{{ userName }}</td>
       <td>{{ dueDate }}</td>
+      <td>{{ completionDate }}</td>
       <td>{{ completionStatus }}</td>
     </tr>
     {{/each}}
