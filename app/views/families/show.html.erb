@@ -25,6 +25,16 @@
   ASAP.
   {{/if}}
   </p>
+  <p>
+  {{#if isClaimed }}
+  <p>
+  CLAIMED
+  </p>
+  {{/if}}
+  </p>
+
+  <button onclick="createTask();">Claim Chore</button>
+
   {{#if tasks.length}}
   <button onclick="showTasks();">Show Tasks</button>
   <div id="tasks-display"></div>
