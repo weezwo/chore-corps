@@ -11,6 +11,10 @@ class Task {
   }
 
   formatCompletionDate(){
-    return moment(this.completionDate).format('MM-DD-YYYY')
+    if (this.completionDate) {
+      return moment(this.completionDate).format('MM-DD-YYYY')
+    } else {
+      return "N/A"
+    }
   }
 }
