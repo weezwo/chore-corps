@@ -47,7 +47,7 @@ class Chore {
   }
 
   currentClaimant() {
-    var task = currentTask();
+    var task = this.currentTask();
     return task.userName
   }
 }
