@@ -39,4 +39,15 @@ class Chore {
     }
     return this.tasks.some(isPending);
   }
+
+  currentTask() {
+    return this.tasks.filter(function(task){
+      return task.completionStatus === 'pending'
+    })[0];
+  }
+
+  currentClaimant() {
+    var task = currentTask();
+    return task.userName
+  }
 }
