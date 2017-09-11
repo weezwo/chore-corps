@@ -1,6 +1,6 @@
 <h2>Chores for the <%= @family.name %> Family</h2>
 <div class="chore"><%= link_to "New Chore", new_chore_path(@family) %></div>
-
+<div class="chore" id="show-all-button">Show All</div>
 </div>
 <% current_family.chores_by_due_date.each do |chore| %>
 <div class="chore" data-id="<%= chore.id %>"><%= chore.name %></div>
@@ -96,6 +96,11 @@ function createTask(button) {
   function attachOnLoadListeners(){
     $(".chore").on('click', function(){
       getChore(this);
+    })
+
+    $("#show-all-button").on('click', function(e){
+      getAllChores(this);
+      e.stopPropagation();
     })
   }
 </script>
