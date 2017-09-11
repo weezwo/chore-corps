@@ -1,5 +1,5 @@
 class ChoresController < ApplicationController
-  before_action :set_chore, only: [:show, :edit, :update, :delete]
+  before_action :set_chore, only: [:show, :edit, :update, :destroy]
 
   def index
     @family = Family.find(params[:id])
@@ -29,7 +29,7 @@ class ChoresController < ApplicationController
 
   def update
     if @chore.update(chore_params)
-      redirect_to chore_path(@chore)
+      redirect_to family_path(@chore.family_id)
     else
       render template: 'chores/edit'
     end
