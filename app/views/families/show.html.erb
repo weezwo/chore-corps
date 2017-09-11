@@ -73,6 +73,13 @@ function getChore(button){
 
 function getAllChores(){
   $("#chore-display").empty();
+  var choreTemplate = Handlebars.compile($("#chore-template").html());
+  $.get(`/families/<%= current_family.id %>/chores`, function(chores){
+    for(let i = 0; i < chores.length; i++){
+      var result = choreTemplate(new Chore(chores[i]));
+      $("#chore-display").append(result);
+    }
+  });
 }
 
 function showTasks(){
