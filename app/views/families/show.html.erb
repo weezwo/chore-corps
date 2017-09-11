@@ -94,7 +94,7 @@ function createTask(button) {
   });
 
   function attachOnLoadListeners(){
-    $(".chore").on('click', function(){
+    $(".chore[data-id]").on('click', function(){
       getChore(this);
     })
 
