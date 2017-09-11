@@ -32,4 +32,11 @@ class Chore {
   isOverdue() {
     return this.calculateDueDate() < Date.now();
   }
+
+  isClaimed() {
+    function isPending(task){
+      return task.completionStatus === 'pending';
+    }
+    return this.tasks.some(isPending);
+  }
 }
