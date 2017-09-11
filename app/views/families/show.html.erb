@@ -71,6 +71,10 @@ function getChore(button){
   });
 }
 
+function getAllChores(){
+  $("#chore-display").empty();
+}
+
 function showTasks(){
   var tasksTemplate = Handlebars.compile($("#tasks-template").html());
   result = tasksTemplate(choreObj.tasks);
