@@ -3,7 +3,7 @@ class ChoresController < ApplicationController
 
   def index
     @family = Family.find(params[:id])
-    render json: @family.chores, include: ['tasks.user'], each_serializer: ChoreSerializer
+    render json: @family.chores, include: ['tasks.user']
   end
 
   def new
