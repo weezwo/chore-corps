@@ -3,15 +3,20 @@ include ChoresHelper
 class TasksController < ApplicationController
   def create
     t = Task.new(task_params)
-    if t.chore.claimed_chore?
-      t.chore.tasks.where(completion_status: 'pending').each do |task|
-        task.update(completion_status: "poached")
+    if user_has_task?(t.chore)
+      render plain: "You have already claimed this chore!"
+    else
+      if t.chore.claimed_chore?
+        t.chore.tasks.where(completion_status: 'pending').each do |task|
+          task.update(completion_status: "poached")
+        end
       end
+      t.completion_status = 'pending'
+      t.due_date = t.chore.calculate_due_date
+      t.save
+      #redirect_to chore_path(t.chore)
+      render json: t, status: 201
     end
-    t.completion_status = 'pending'
-    t.due_date = t.chore.calculate_due_date
-    t.save
-    redirect_to chore_path(t.chore)
   end
 
   def update
