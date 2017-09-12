@@ -29,6 +29,25 @@ ASAP.
   <% end %>
 <% end %>
 <br>
+<% if @chore.tasks.size > 0 %>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Date Completed</th>
+      <th>Status</th>
+    </tr>
+  <% @chore.tasks.each do |task| %>
+  <% if task.user %>
+  <tr>
+  <td><%= task.user.name %></td>
+  <td><%= task.completion_date ? format_date(task.completion_date) : "N/A" %></td>
+  <td><%= task.completion_status %></td>
+  </tr>
+  <% end %>
+  <% end %>
+  </table>
+<% end %>
+<br>
 <%= link_to "Edit Chore", edit_chore_path(@chore) %> | <%= link_to "Delete Chore", chore_path(@chore), method: :delete %>
 <br>
 <%= link_to "Back to Family Page", family_path(@chore.family) %>
