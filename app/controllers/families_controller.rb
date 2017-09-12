@@ -1,6 +1,7 @@
 class FamiliesController < ApplicationController
   before_action :authenticate_user!, only: [:show, :users_index]
   before_action :verify_family, only: [:show, :users_index]
+  before_action :set_family, only: [:show, :users_index, :stats]
 
   def new
     @family = Family.new
@@ -20,18 +21,23 @@ class FamiliesController < ApplicationController
 
   def show
     @user = current_user
-    @family = Family.find(params[:id])
   end
 
   def users_index
-    @family = Family.find(params[:id])
     @users = @family.users
     render template: 'users/index'
+  end
+
+  def stats
   end
 
   private
 
   def family_params
     params.require(:family).permit(:name, :password, :password_confirmation, :users_attributes => [:name, :email, :password, :password_confirmation])
+  end
+
+  def set_family
+    @family = Family.find(params[:id])
   end
 end

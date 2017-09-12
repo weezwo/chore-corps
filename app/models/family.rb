@@ -15,4 +15,8 @@ class Family < ActiveRecord::Base
   def chores_by_due_date
     chores.sort_by{|chore| chore.calculate_due_date}
   end
+
+  def most_completed_chore
+    chores.sort_by{|chore| chore.tasks.size}.reverse.first
+  end
 end
