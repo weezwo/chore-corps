@@ -1,7 +1,118 @@
 <h2>Chores for the <%= @family.name %> Family</h2>
 <div class="chore"><%= link_to "New Chore", new_chore_path(@family) %></div>
-
+<div class="chore" id="show-all-button">Show All</div>
 </div>
 <% current_family.chores_by_due_date.each do |chore| %>
-<div class="chore"><%= link_to chore.name, chore_path(chore) %></div>
+<div class="chore" data-id="<%= chore.id %>"><%= chore.name %></div>
 <% end %>
+<div id="chore-display">
+
+</div>
+
+<script id="chore-template" type="text/x-handlebars-template">
+  <h2>{{ name }}</h2>
+  <p>{{ notes }}</p>
+  <p>This chore should be done every {{ formatFrequency }}.</p>
+  <p> This chore should be completed
+  {{#if last_completed }}
+  by
+    {{#if isOverdue }}
+    <span class="overdue">{{ formatDueDate }}</span>.
+    {{else}}
+    {{ formatDueDate }}.
+    {{/if}}
+  {{else}}
+  ASAP.
+  {{/if}}
+  </p>
+  <p>
+  {{#if isClaimed }}
+  <p>
+  This chore is currently claimed by {{ currentClaimant }}.
+  </p>
+  {{/if}}
+  <a href='/chores/{{ id }}/edit'>Edit</a> | <a href='/chores/{{ id }}' data-method="delete">Delete</a><br>
+
+  <button onclick="createTask(this);" data-choreid="{{ id }}" data-userid="<%= current_user.id %>">Claim Chore</button>
+
+  {{#if tasks.length}}
+  <button onclick="showTasks();">Show Tasks</button>
+  <div id="tasks-display"></div>
+  {{/if}}
+</script>
+
+<script id="tasks-template" type="text/x-handlebars-template">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Due Date</th>
+      <th>Completion Date</th>
+      <th>Status</th>
+    </tr>
+    {{#each this}}
+    <tr>
+      <td>{{ this.userName }}</td>
+      <td>{{ formatDueDate }}</td>
+      <td>{{ formatCompletionDate }}</td>
+      <td>{{ completionStatus }}</td>
+    </tr>
+    {{/each}}
+  </table>
+</script>
+
+<script type="text/javascript" charset="utf-8">
+
+function getChore(button){
+  $("#chore-display").empty();
+  var choreTemplate = Handlebars.compile($("#chore-template").html());
+  $.get(`/chores/${$(button).data("id")}`, function(chore){
+    choreObj = new Chore(chore)
+    result = choreTemplate(choreObj);
+    $("#chore-display").html(result)
+  });
+}
+
+function getAllChores(){
+  $("#chore-display").empty();
+  var choreTemplate = Handlebars.compile($("#chore-template").html());
+  $.get(`/families/<%= current_family.id %>/chores`, function(chores){
+    for(let i = 0; i < chores.length; i++){
+      var result = choreTemplate(new Chore(chores[i]));
+      $("#chore-display").append(result);
+    }
+  });
+}
+
+function showTasks(){
+  var tasksTemplate = Handlebars.compile($("#tasks-template").html());
+  result = tasksTemplate(choreObj.tasks);
+  $("#tasks-display").html(result);
+}
+
+function createTask(button) {
+  data = {task: {chore_id: $(button).data("choreid"), user_id: $(button).data("userid")}}
+ $.post('/tasks', data, function(taskData){
+   if (taskData.id){
+    choreObj.tasks.push(new Task(taskData));
+    showTasks();
+  } else {
+    $("#tasks-display").append(`<p>${taskData}</p>`)
+  }
+ });
+}
+
+  $(function(){
+    attachOnLoadListeners();
+  });
+
+  function attachOnLoadListeners(){
+    $(".chore[data-id]").on('click', function(){
+      getChore(this);
+    })
+
+    $("#show-all-button").on('click', function(e){
+      getAllChores(this);
+      e.stopPropagation();
+    })
+  }
+</script>

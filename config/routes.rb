@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'families/:id/stats' => 'families#stats', as: 'family_stats'
 
   get 'families/:id/chores/new' => 'chores#new', as: 'new_chore'
+  get 'families/:id/chores' => 'chores#index', as: 'chore_index'
   post 'families/:id/chores' => 'chores#create', as: 'chores'
 
   root 'static#index', as: 'root'
