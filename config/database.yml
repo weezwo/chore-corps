@@ -9,19 +9,21 @@ default: &default
   database: chorecorpsdb
   pool: 5
   timeout: 5000
+  username: luisa
+  password: owleat
 
 development:
   <<: *default
   database: chorecorpsdb-dev
-  host: localhost
+  # host: localhost
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: chorecorpsdb-test
-  host: localhost
+  database: chorecorpsdbtest
+  # host: localhost
 
 production:
   <<: *default
