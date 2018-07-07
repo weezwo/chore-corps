@@ -77,6 +77,10 @@ footer {
   box-shadow: 3px 3px 2px #aaa;
 }
 
+.claimed {
+  color: #ddd
+}
+
 .overdue {
   color: maroon;
 }
