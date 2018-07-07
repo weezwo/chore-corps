@@ -2,7 +2,7 @@
 
 <% if user.pending_tasks.count > 0 %>
   <% user.pending_tasks.each do |task| %>
-    <%= link_to task.chore.name, chore_path(task.chore) %> - <span <%= "class='overdue'" if overdue?(task) %>>Due <%= format_due_date(task) %></span>
+    <%= link_to task.chore.name, chore_path(task.chore) %> - <span <%= 'class=overdue' if overdue?(task) %>>Due <%= format_due_date(task) %></span>
     <% if task.user == current_user %>
       <%= form_for task do |f| %>
       <%= f.submit "Complete this Chore!" %>
