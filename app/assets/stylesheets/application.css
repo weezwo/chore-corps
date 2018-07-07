@@ -76,13 +76,12 @@ footer {
   border-radius: 3px;
   box-shadow: 3px 3px 2px #aaa;
 }
+.overdue {
+  color: maroon;
+}
 
 .claimed {
   color: #ddd
-}
-
-.overdue {
-  color: maroon;
 }
 
 button, input[type=submit] {
