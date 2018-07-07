@@ -14,8 +14,8 @@ class TasksController < ApplicationController
       t.completion_status = 'pending'
       t.due_date = t.chore.calculate_due_date
       t.save
-      #redirect_to chore_path(t.chore)
-      render json: t, status: 201
+      redirect_to t.chore.family, notice: "Success!"
+      #render json: t, status: 201
     end
   end
 
