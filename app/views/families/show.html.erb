@@ -31,7 +31,7 @@
   This chore is currently claimed by {{ currentClaimant }}.
   </p>
   {{/if}}
-  <a href='/chores/{{ id }}/edit'>Edit</a> | <a href='/chores/{{ id }}' data-method="delete">Delete</a><br>
+  <a href='/chores/{{ id }}/edit'>Edit</a> | <a href='/chores/{{ id }}' data-method="delete" onclick="return confirm('Are you sure you want to delete this chore? You will permanently lose all tasks assoicated with it.');">Delete</a><br>
 
   <button onclick="createTask(this);" data-choreid="{{ id }}" data-userid="<%= current_user.id %>">Claim Chore</button>
 
