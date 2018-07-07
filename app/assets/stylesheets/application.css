@@ -81,7 +81,11 @@ footer {
 }
 
 .claimed {
-  color: #ddd
+  color: #ddd;
+}
+
+.overdue.claimed {
+  color: #7c4d4d;
 }
 
 button, input[type=submit] {
