@@ -36,7 +36,7 @@ class ChoresController < ApplicationController
   end
 
   def destroy
-    @chore.delete
+    @chore.destroy
     redirect_to family_path(current_family)
   end
 
