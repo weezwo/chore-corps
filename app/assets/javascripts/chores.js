@@ -5,6 +5,7 @@ class Chore {
     this.cycle = obj.cycle;
     this.last_completed = Date.parse(obj.last_completed);
     this.notes = obj.notes;
+    this.due_date = Date.parse(obj.due_date);
     this.created_at = Date.parse(obj.created_at);
     this.updated_at = Date.parse(obj.updated_at);
     this.tasks = [];
@@ -21,6 +22,10 @@ class Chore {
 
   cycled() {
     return this.cycle > 0
+  }
+
+  hasBeenCompletedOrHasDueDate() {
+    return this.last_completed || this.due_date
   }
 
   formatFrequency() {
