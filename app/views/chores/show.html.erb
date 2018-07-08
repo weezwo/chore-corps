@@ -11,7 +11,7 @@ This is a one-time chore!
 <% end %><br>
 
 This chore should be completed
-<% if @chore.last_completed %>
+<% if @chore.last_completed || @chore.due_date %>
   by <span <%= "class='overdue'" if overdue?(@chore) %>><%= format_due_date(@chore) %>.</span>
 <% else %>
 ASAP.
