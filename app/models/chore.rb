@@ -4,7 +4,7 @@ class Chore < ActiveRecord::Base
 
   validates :name, presence: true
   validates :due_date, absence: {unless: -> {self.cycle.nil?}, message: "must be blank for cycled chores" }
-  validates :due_date, presence: {if: -> {self.cycle.nil?} message: "must be present for one-off chores"}
+  validates :due_date, presence: {if: -> {self.cycle.nil?}, message: "must be present for one-off chores"}
 
   scope :uncycled, -> { where(cycle: nil)}
   scope :cycled, -> { where.not(id: uncycled) }
