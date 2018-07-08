@@ -19,6 +19,10 @@ class Chore {
     return this.cycle / 86400
   }
 
+  cycled() {
+    return this.cycle > 0
+  }
+
   formatFrequency() {
     return this.frequency() === 1 ? "day" : `${this.frequency()} days`;
   }
