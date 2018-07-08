@@ -99,7 +99,7 @@ button, input[type=submit] {
   box-shadow: 3px 3px 2px #aaa;
 }
 
-input[type=text], input[type=password], input[type=email], textarea {
+input[type=text], input[type=password], input[type=email], input[type=date], textarea {
     font-size: 100%;
     font-family: 'Antic Slab', serif;
     margin: 10px;
