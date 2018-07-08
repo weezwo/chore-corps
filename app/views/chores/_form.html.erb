@@ -8,6 +8,7 @@
 <% end %>
 <%= f.label :name, "Name:" %> <%= f.text_field :name %> <br>
 <%= f.label :cycle, "Cycle:" %> <%= f.select :cycle, options_for_select(cycle_opts) %> <br>
+<div id="one-off-fields"></div>
 <%= f.label :notes, "Notes:" %> <%= f.text_area :notes %> <br>
 <%= f.submit %>
 <% end %>
