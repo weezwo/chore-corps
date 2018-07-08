@@ -12,10 +12,6 @@ class Family < ActiveRecord::Base
     end
   end
 
-  def chores_by_due_date
-    chores.by_due_date
-  end
-
   def most_completed_chore
     chores.sort_by{|chore| chore.tasks.size}.reverse.first
   end
