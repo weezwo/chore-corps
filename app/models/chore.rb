@@ -8,6 +8,8 @@ class Chore < ActiveRecord::Base
 
   scope :uncycled, -> { where(cycle: nil)}
   scope :cycled, -> { where.not(id: uncycled) }
+  scope :undisplayable, -> {where.not(last_completed: nil).where.not(due_date: nil)}
+  scope :displayable, -> { where.not(id: undisplayable)}
 
   def self.by_due_date
     uncycled + cycled.sort_by{|chore| chore.calculate_due_date}
