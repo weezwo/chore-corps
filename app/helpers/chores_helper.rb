@@ -13,7 +13,7 @@ module ChoresHelper
   end
 
   def overdue?(object)
-    if object.respond_to? :due_date
+    if object.due_date
       object.due_date < DateTime.now
     else
       object.calculate_due_date < DateTime.now
