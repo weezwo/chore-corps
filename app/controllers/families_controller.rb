@@ -21,6 +21,7 @@ class FamiliesController < ApplicationController
 
   def show
     @user = current_user
+    @chores = current_family.chores.displayable.by_due_date
   end
 
   def users_index
