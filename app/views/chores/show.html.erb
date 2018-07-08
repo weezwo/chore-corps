@@ -4,7 +4,7 @@
 <%= @chore.notes %><br><br>
 <% end %>
 
-<% if @chore.frequency %>
+<% if @chore.cycle %>
 This chore is done every <%= format_frequency(@chore) %>.
 <% else %>
 This is a one-time chore!
