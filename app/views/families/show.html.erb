@@ -18,7 +18,7 @@
   <p>This is a one-off chore.</p>
   {{/if}}
   <p> This chore should be completed
-  {{#if last_completed }}
+  {{#if hasBeenCompletedOrHasDueDate }}
   by
     {{#if isOverdue }}
     <span class="overdue">{{ formatDueDate }}</span>.
