@@ -13,7 +13,7 @@ class Family < ActiveRecord::Base
   end
 
   def chores_by_due_date
-    chores.sort_by{|chore| chore.calculate_due_date}
+    chores.by_due_date
   end
 
   def most_completed_chore
