@@ -12,7 +12,11 @@
 <script id="chore-template" type="text/x-handlebars-template">
   <h2>{{ name }}</h2>
   <p>{{ notes }}</p>
+  {{#if cycled }}
   <p>This chore should be done every {{ formatFrequency }}.</p>
+  {{else}}
+  <p>This is a one-off chore.</p>
+  {{/if}}
   <p> This chore should be completed
   {{#if last_completed }}
   by
