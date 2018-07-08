@@ -2,7 +2,7 @@
 <div class="chore"><%= link_to "New Chore", new_chore_path(@family) %></div>
 <div class="chore" id="show-all-button">Show All</div>
 </div>
-<% current_family.chores_by_due_date.each do |chore| %>
+<% @chores.each do |chore| %>
 <div class="chore <%= "claimed" if chore.claimed_chore? %> <%= "overdue" if overdue?(chore) %>" data-id="<%= chore.id %>"><%= chore.name %></div>
 <% end %>
 <div id="chore-display">
